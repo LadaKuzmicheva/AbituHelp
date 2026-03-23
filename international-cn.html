@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AbituHelp — 俄罗斯大学国际学生申请服务：选校选专业、材料准备、录取邀请函、签证与落地支持。" />
+  <title>AbituHelp — 俄罗斯大学国际学生申请（中文）</title>
+
+  <style>
+    :root{
+      --bg: #071726;
+      --bg2:#0b2540;
+      --text:#eaf2ff;
+      --muted:#b8c7de;
+      --muted2:#8fa6c6;
+
+      --primary:#1d74d3;
+      --primary2:#0b4f8a;
+      --accent:#67b6ff;
+
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 28px;
+
+      --max: 1120px;
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(29,116,211,.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(103,182,255,.25), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,23,38,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:14px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .brand img{ height:34px; width:auto; display:block; }
+    .brand strong{ font-size:14px; letter-spacing:.3px; }
+    .brand span{ display:block; font-size:12px; color:var(--muted2); margin-top:2px; }
+
+    .menu{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .menu a{
+      font-size:14px; color:var(--muted);
+      padding:10px 10px; border-radius:10px;
+      border:1px solid transparent;
+      transition:.2s ease;
+    }
+    .menu a:hover{ color:var(--text); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:11px 14px;
+      border-radius: 14px; border:1px solid var(--border);
+      background: rgba(255,255,255,.05); color:var(--text);
+      font-weight:600; font-size:14px; cursor:pointer;
+      transition:.2s ease; white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary2) 100%);
+      border-color: rgba(103,182,255,.35);
+      box-shadow: 0 12px 30px rgba(29,116,211,.25);
+    }
+
+    .hero{ padding: 46px 0 18px; }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:14px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(103,182,255,.15);
+    }
+    h1{
+      margin: 14px 0 12px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+    .lead{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 72ch;
+    }
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
+
+    section{ padding: 36px 0; }
+    .section-head{ margin-bottom: 14px; }
+    .section-head h2{ margin:0; font-size: 24px; letter-spacing:-.01em; }
+    .section-head p{ margin:8px 0 0; color:var(--muted); max-width: 80ch; line-height:1.65; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.20);
+    }
+    .card.soft{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); }
+    .card h3{ margin:0 0 8px; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); line-height:1.65; font-size:14px; }
+
+    .bullets{
+      margin: 12px 0 0; padding:0; list-style:none;
+      display:grid; gap:10px;
+    }
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:var(--muted);
+      font-size: 14px; line-height:1.6;
+      padding:10px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    .check{
+      width:20px; height:20px; border-radius:7px;
+      background: rgba(29,116,211,.20);
+      border: 1px solid rgba(103,182,255,.25);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight: 900;
+      flex:0 0 20px;
+      margin-top:2px;
+    }
+
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      align-items:stretch;
+    }
+    .plan{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .plan.highlight{
+      border-color: rgba(103,182,255,.35);
+      background:
+        radial-gradient(500px 220px at 10% 0%, rgba(103,182,255,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+    }
+    .plan .top{ display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    .badge{
+      font-size:12px; font-weight:800;
+      padding: 7px 10px; border-radius:999px;
+      border: 1px solid rgba(103,182,255,.35);
+      background: rgba(103,182,255,.12);
+      white-space:nowrap;
+    }
+    .plan h3{ margin:0 0 6px; font-size: 16px; }
+    .plan .who{ margin:0; color:var(--muted); font-size: 13.5px; line-height:1.6; }
+    .price{
+      margin: 12px 0 10px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+    }
+    .price b{ font-size: 20px; }
+    .price small{ color: var(--muted2); }
+    .plan ul{ margin: 10px 0 0; padding:0; list-style:none; display:grid; gap:9px; }
+    .plan li{ display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size: 13.3px; line-height:1.6; }
+    .plan .actions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .step{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .step .n{
+      width:34px; height:34px; border-radius: 12px;
+      background: rgba(103,182,255,.14);
+      border: 1px solid rgba(103,182,255,.22);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .step h4{ margin:0 0 6px; font-size: 14.5px; }
+    .step p{ margin:0; color:var(--muted); font-size: 13px; line-height:1.6; }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .kv{ display:grid; gap:10px; margin-top: 10px; }
+    .kv .row{
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.6;
+    }
+    .kv .row b{ color: var(--text); }
+
+    footer{
+      padding: 26px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size: 13px;
+      margin-top: 16px;
+    }
+    .foot{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .foot a{ color: var(--muted); }
+    .foot a:hover{ color: var(--text); }
+
+    @media (max-width: 1100px){
+      .pricing{ grid-template-columns: repeat(2, 1fr); }
+      .steps{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .two{ grid-template-columns: 1fr; }
+    }
+  
+    /* ═══ ENHANCED DESIGN SYSTEM ═══ */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(29,116,211,.30), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(103,182,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    body > *, header, main, footer { position: relative; z-index: 1; }
+
+    /* Dot grid background */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: radial-gradient(circle, rgba(103,182,255,.8) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Gradient text utility */
+    .grad-text, h1, .section-head h2 {
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 6s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Enhanced header */
+    header {
+      background: rgba(7,23,38,.72);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(103,182,255,.08);
+      transition: box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,.3);
+    }
+
+    /* Better card hovers */
+    .card, .tariff, .plan, .hero-card, blockquote, .step, details {
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover, .tariff:hover, .plan:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 30px rgba(103,182,255,.06);
+      border-color: rgba(103,182,255,.2);
+    }
+    blockquote:hover, .step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+      border-color: rgba(103,182,255,.18);
+    }
+
+    /* Enhanced buttons */
+    .btn {
+      transition: all 0.25s cubic-bezier(.22,1,.36,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #2563eb 50%, var(--primary2) 100%);
+      background-size: 200% 200%;
+      animation: btn-shimmer 4s ease infinite;
+    }
+    @keyframes btn-shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Enhanced badges */
+    .badge {
+      background: linear-gradient(135deg, rgba(103,182,255,.18), rgba(103,182,255,.08));
+      border-color: rgba(103,182,255,.3);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* Better pill */
+    .pill {
+      animation: fadeInDown 0.6s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Hero title animation */
+    h1 {
+      animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.15s both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .lead { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.3s both; }
+    .hero-actions { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.45s both; }
+    .mini { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.55s both; }
+    .hero-card { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.4s both; }
+
+    /* Smooth FAQ accordion */
+    details summary {
+      transition: color 0.2s ease;
+    }
+    details summary:hover { color: var(--accent); }
+    details summary span {
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+      display: inline-block;
+      font-size: 18px;
+    }
+    details[open] summary span { transform: rotate(45deg); }
+    details[open] {
+      border-color: rgba(103,182,255,.2);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Enhanced pricing cards */
+    .tariff.highlight, .plan.highlight {
+      border-color: rgba(103,182,255,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 0 40px rgba(103,182,255,.08);
+    }
+
+    /* Better check marks */
+    .check, .icon {
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    li:hover .check, li:hover .icon {
+      transform: scale(1.12);
+      background: rgba(103,182,255,.28);
+    }
+
+    /* Tags animation */
+    .mini .tag {
+      transition: all 0.2s ease;
+    }
+    .mini .tag:hover {
+      background: rgba(103,182,255,.1);
+      border-color: rgba(103,182,255,.25);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Chips */
+    .chip {
+      transition: all 0.2s ease;
+    }
+    .chip:hover {
+      background: rgba(103,182,255,.08);
+      border-color: rgba(103,182,255,.2);
+    }
+
+    /* Back to top button */
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 90;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(103,182,255,.2);
+      background: rgba(7,23,38,.85);
+      backdrop-filter: blur(12px);
+      color: var(--accent);
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.3s cubic-bezier(.22,1,.36,1);
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+    .back-top.show {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .back-top:hover {
+      background: rgba(29,116,211,.3);
+      border-color: rgba(103,182,255,.4);
+      transform: translateY(-2px);
+    }
+
+    /* Glow effect on section heads */
+    .section-head h2 {
+      position: relative;
+    }
+    .section-head h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 50px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0.6;
+    }
+
+    /* Better footer */
+    footer {
+      border-top: 1px solid rgba(103,182,255,.08);
+      background: rgba(0,0,0,.15);
+    }
+
+    /* Smooth selection */
+    ::selection {
+      background: rgba(103,182,255,.3);
+      color: var(--text);
+    }
+
+    /* Better focus states */
+    .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(103,182,255,.4);
+      box-shadow: 0 0 0 3px rgba(103,182,255,.1);
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="AbituHelp">
+          <img src="logo.png" alt="AbituHelp logo" />
+          <div>
+            <strong>AbituHelp</strong>
+            <span>国际学生申请</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="导航">
+          <a href="#packages">套餐价格</a>
+          <a href="#process">申请流程</a>
+          <a href="#requirements">材料要求</a>
+          <a href="#faq">常见问题</a>
+          <a href="#contact">联系我们</a>
+          <a class="btn" href="international.html" aria-label="English version">EN</a>
+          <a class="btn primary" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <span class="pill"><span class="dot"></span>国际学生 • 俄罗斯大学申请服务</span>
+        <h1>俄罗斯大学申请：从选校到签证落地，一步一步清晰可控</h1>
+        <p class="lead">
+          AbituHelp 为国际申请者提供专业支持：选择合适的专业与院校、准备与审核材料、获取录取邀请函（Admission Letter），
+          如需入学考试则协助准备与安排；同时解释签证与落地手续，帮助顺利适应学习与生活。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#packages">查看套餐</a>
+          <a class="btn" href="tel:+79509222291">电话：+7 (950) 922-22-91</a>
+          <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram @abituhelp</a>
+        </div>
+
+        <div class="grid" style="margin-top:16px;">
+          <div class="card soft">
+            <h3>落地与适应支持</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>签证步骤说明与材料核对</li>
+              <li><span class="check">✓</span>到达/接机指引（视情况提供）</li>
+              <li><span class="check">✓</span>住宿协助（宿舍/公寓）</li>
+              <li><span class="check">✓</span>移民注册流程清单与提醒</li>
+              <li><span class="check">✓</span>学习与生活常见问题支持</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>申请关键环节</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>选校选专业（根据预算、语言、目标）</li>
+              <li><span class="check">✓</span>材料清单与准备</li>
+              <li><span class="check">✓</span>申请递交支持与沟通策略</li>
+              <li><span class="check">✓</span>录取邀请函（Admission Letter）</li>
+              <li><span class="check">✓</span>入学考试/面试准备（如需）</li>
+            </ul>
+          </div>
+
+          <div class="card soft">
+            <h3>透明的工作方式</h3>
+            <p>我们把复杂流程拆成可执行的步骤：明确节点、材料、截止日期，并在工作群里及时答疑。</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#contact">联系我们</a>
+              <a class="btn" href="index.html">返回主页</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages">
+        <div class="section-head">
+          <h2>套餐与价格</h2>
+          <p>从材料审核与递交，到第一学年的“管家式”支持 —— 选择适合你的服务强度。</p>
+        </div>
+
+        <div class="pricing">
+          <article class="plan">
+            <div class="top">
+              <div>
+                <h3>基础（Basic）</h3>
+                <p class="who">适合需要材料审核、选校选专业、递交申请与邀请函流程支持的申请者。</p>
+              </div>
+              <span class="badge">入门</span>
+            </div>
+
+            <div class="price"><b>$999</b><small>套餐</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>最长 3 个月线上支持</li>
+              <li><span class="check">✓</span>专属经理 + 工作群</li>
+              <li><span class="check">✓</span>3 次 Zoom（每次不超过 60 分钟）</li>
+              <li><span class="check">✓</span>按你的需求筛选学校与专业</li>
+              <li><span class="check">✓</span>材料准备清单 + 审核建议</li>
+              <li><span class="check">✓</span>获取录取邀请函（Admission Letter）流程支持</li>
+              <li><span class="check">✓</span>与学校沟通策略与要点</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">立即咨询</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </article>
+
+          <article class="plan highlight">
+            <div class="top">
+              <div>
+                <h3>升级（Plus）</h3>
+                <p class="who">适合还需要移民注册步骤说明，以及部分线下协助（视情况提供）的申请者。</p>
+              </div>
+              <span class="badge">热门</span>
+            </div>
+
+            <div class="price"><b>$1,499</b><small>套餐</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>包含“基础”全部服务</li>
+              <li><span class="check">✓</span>最多 4 次 Zoom（每次不超过 60 分钟）</li>
+              <li><span class="check">✓</span>移民注册流程清单与提醒</li>
+              <li><span class="check">✓</span>到达支持（接机/指引，视情况提供）</li>
+              <li><span class="check">✓</span>学校/城市适应指引（视情况提供）</li>
+              <li><span class="check">✓</span>学历认证（nostrification）咨询</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">立即咨询</a>
+              <a class="btn" href="#process">查看流程</a>
+            </div>
+          </article>
+
+          <article class="plan">
+            <div class="top">
+              <div>
+                <h3>专业（Pro）</h3>
+                <p class="who">适合希望在第一学年获得更强“管家式”支持：住宿、适应、学习流程与日常事务。</p>
+              </div>
+              <span class="badge">管家</span>
+            </div>
+
+            <div class="price"><b>$2,499</b><small>套餐</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>包含“升级”全部服务</li>
+              <li><span class="check">✓</span>10 个月支持（聚焦第一学年）</li>
+              <li><span class="check">✓</span>专属导师 + 每月 1 次 Zoom</li>
+              <li><span class="check">✓</span>宿舍办理协助</li>
+              <li><span class="check">✓</span>公寓寻找/预订支持（按需）</li>
+              <li><span class="check">✓</span>银行卡/基础生活办理协助</li>
+              <li><span class="check">✓</span>家教/学习支持建议 + 学术流程咨询</li>
+              <li><span class="check">✓</span>文化适应与常见问题支持</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">立即咨询</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">提问</a>
+            </div>
+          </article>
+
+          <article class="plan">
+            <div class="top">
+              <div>
+                <h3>奖学金/配额（Grant）</h3>
+                <p class="who">适合计划走配额/奖学金通道，并愿意提前开始准备的申请者。</p>
+              </div>
+              <span class="badge">长期</span>
+            </div>
+
+            <div class="price"><b>$3,499</b><small>套餐</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>包含“专业”全部服务</li>
+              <li><span class="check">✓</span>更长期规划（预科/基础年 + 大一路径）</li>
+              <li><span class="check">✓</span>每月 Zoom 支持 + 工作群</li>
+              <li><span class="check">✓</span>翻译与文件认证/公证指引（最多 15 页范围）</li>
+              <li><span class="check">✓</span>学生签证与移民手续清单</li>
+              <li><span class="check">✓</span>体检与常见检测路径指引（086/U、HIV/HBV/HCV）</li>
+              <li><span class="check">✓</span>配额/奖学金申请材料逻辑与组织</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">立即咨询</a>
+              <a class="btn" href="#requirements">查看材料要求</a>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top:12px; color:var(--muted2); font-size:12.5px; line-height:1.6;">
+          说明：不同学校/专业要求可能不同。我们会在开始阶段根据你的国家与目标院校确认最终材料清单。
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="section-head">
+          <h2>申请流程（概览）</h2>
+          <p>各校细节不同，但整体路径相近。我们帮助你把每一步走稳，避免遗漏关键节点。</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h4>选校选专业</h4>
+            <p>根据目标、预算、语言水平与时间线，确定可行方案。</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h4>材料准备</h4>
+            <p>学历文件、翻译、公证/认证（如需）等，逐项核对。</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h4>递交申请</h4>
+            <p>协助递交与沟通，跟进审核与邀请函流程。</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <h4>入学考试</h4>
+            <p>如需考试/面试，帮助准备与安排，减少冲突与风险。</p>
+          </div>
+          <div class="step">
+            <div class="n">5</div>
+            <h4>签证与落地</h4>
+            <p>邀请函 → 学生签证 → 到达后注册与适应支持。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="requirements">
+        <div class="section-head">
+          <h2>常见材料要求</h2>
+          <p>最终要求以目标学校为准。以下为多数院校常见的基础清单。</p>
+        </div>
+
+        <div class="two">
+          <div class="card soft">
+            <h3>常见材料</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>护照与照片（有效期要求因学校而异）</li>
+              <li><span class="check">✓</span>学历文件（毕业证/成绩单等）</li>
+              <li><span class="check">✓</span>翻译件与认证/公证（按要求）</li>
+              <li><span class="check">✓</span>申请表与相关声明文件</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>体检与落地手续</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>体检路径（常见为 086/U，按学校要求确认）</li>
+              <li><span class="check">✓</span>HIV / HBV / HCV 检测（常见于签证/入学流程）</li>
+              <li><span class="check">✓</span>保险与住宿相关文件（视情况）</li>
+              <li><span class="check">✓</span>落地后移民注册步骤与时间要求</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>不会俄语怎么办？</h3>
+          <p>
+            许多大学提供一年的预科/语言基础课程，帮助达到授课要求并适应学习节奏。
+            我们可以解释不同选择，并协助你在俄罗斯任意地区选择合适的预科路线。
+          </p>
+        </div>
+
+        <div class="card soft" style="margin-top:14px;">
+          <h3>配额/奖学金与免学费机会</h3>
+          <p>
+            国际学生可能通过配额或奖学金项目申请到免学费名额。通常需要更严格的截止日期与额外材料（动机信、推荐信、翻译等）。
+            我们帮助你理清材料结构，减少返工与遗漏。
+          </p>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <h2>常见问题</h2>
+          <p>快速解答一些高频问题。</p>
+        </div>
+
+        <div class="two">
+          <div class="card">
+            <h3>能保证录取吗？</h3>
+            <p>我们保证流程质量与专业指导，但最终决定取决于学校、竞争情况与个人背景。</p>
+          </div>
+          <div class="card soft">
+            <h3>只做某些城市吗？</h3>
+            <p>不，我们面向全俄院校。线下支持是否可提供，会在沟通后确认。</p>
+          </div>
+          <div class="card soft">
+            <h3>可以申请英文授课项目吗？</h3>
+            <p>可以。我们会根据你的需求提供俄语/英语项目的可选方案。</p>
+          </div>
+          <div class="card">
+            <h3>怎么开始？</h3>
+            <p>建议直接 Telegram 联系我们，说明国家、目标层级（本科/硕士）、语言与时间线，我们会给出下一步建议。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <h2>联系 AbituHelp</h2>
+          <p>最快方式：Telegram。也可以直接电话联系。</p>
+        </div>
+
+        <div class="contact">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram @abituhelp</a>
+            <a class="btn" href="tel:+79509222291">+7 (950) 922-22-91</a>
+            <a class="btn" href="index.html">返回主页</a>
+          </div>
+
+          <div class="kv">
+            <div class="row"><b>覆盖范围：</b> 全俄线上支持；线下支持视情况确认</div>
+            <div class="row"><b>语言：</b> 英语/俄语（其他语言可沟通）</div>
+            <div class="row"><b>回复速度：</b> 通常 1 个工作日内</div>
+          </div>
+
+          <div style="margin-top:10px; color:var(--muted2); font-size:12.5px; line-height:1.6;">
+            建议信息：国家、目标专业/层级、本科或硕士、授课语言、预计入学时间、是否考虑奖学金/配额。
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="foot">
+            <div>© <span id="year"></span> AbituHelp • 国际学生申请</div>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+              <a href="#packages">套餐</a>
+              <a href="#process">流程</a>
+              <a href="#requirements">要求</a>
+              <a href="#contact">联系</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  
+
+  <button class="back-top" id="backTop" aria-label="Back to top">&uarr;</button>
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('section, .card, .tariff, .plan, .step, blockquote, details, .hero-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      if (i % 3 === 1) el.classList.add('reveal-delay-1');
+      if (i % 3 === 2) el.classList.add('reveal-delay-2');
+      obs.observe(el);
+    });
+
+    // Header scroll effect
+    const hdr = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      hdr?.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Back to top
+    const btt = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      btt?.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+    btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

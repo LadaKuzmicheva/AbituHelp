@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AbituHelp — admission support for international students applying to Russian universities: documents, invitation letter, visa steps, relocation & adaptation." />
+  <title>AbituHelp — International Students Admission to Russian Universities</title>
+
+  <style>
+    :root{
+      --bg: #071726;
+      --bg2:#0b2540;
+      --text:#eaf2ff;
+      --muted:#b8c7de;
+      --muted2:#8fa6c6;
+
+      --primary:#1d74d3;
+      --primary2:#0b4f8a;
+      --accent:#67b6ff;
+
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 28px;
+
+      --max: 1120px;
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(29,116,211,.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(103,182,255,.25), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,23,38,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:14px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .brand img{ height:34px; width:auto; display:block; }
+    .brand strong{ font-size:14px; letter-spacing:.3px; }
+    .brand span{ display:block; font-size:12px; color:var(--muted2); margin-top:2px; }
+
+    .menu{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .menu a{
+      font-size:14px; color:var(--muted);
+      padding:10px 10px; border-radius:10px;
+      border:1px solid transparent;
+      transition:.2s ease;
+    }
+    .menu a:hover{ color:var(--text); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:11px 14px;
+      border-radius: 14px; border:1px solid var(--border);
+      background: rgba(255,255,255,.05); color:var(--text);
+      font-weight:600; font-size:14px; cursor:pointer;
+      transition:.2s ease; white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary2) 100%);
+      border-color: rgba(103,182,255,.35);
+      box-shadow: 0 12px 30px rgba(29,116,211,.25);
+    }
+
+    .hero{ padding: 46px 0 18px; }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:14px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(103,182,255,.15);
+    }
+    h1{
+      margin: 14px 0 12px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.10;
+    }
+    .lead{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
+
+    section{ padding: 36px 0; }
+    .section-head{ margin-bottom: 14px; }
+    .section-head h2{ margin:0; font-size: 24px; letter-spacing:-.01em; }
+    .section-head p{ margin:8px 0 0; color:var(--muted); max-width: 80ch; line-height:1.55; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.20);
+    }
+    .card.soft{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); }
+    .card h3{ margin:0 0 8px; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); line-height:1.55; font-size:14px; }
+
+    .bullets{
+      margin: 12px 0 0; padding:0; list-style:none;
+      display:grid; gap:10px;
+    }
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:var(--muted);
+      font-size: 14px; line-height:1.45;
+      padding:10px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    .check{
+      width:20px; height:20px; border-radius:7px;
+      background: rgba(29,116,211,.20);
+      border: 1px solid rgba(103,182,255,.25);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight: 900;
+      flex:0 0 20px;
+      margin-top:2px;
+    }
+
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      align-items:stretch;
+    }
+    .plan{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .plan.highlight{
+      border-color: rgba(103,182,255,.35);
+      background:
+        radial-gradient(500px 220px at 10% 0%, rgba(103,182,255,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+    }
+    .plan .top{ display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    .badge{
+      font-size:12px; font-weight:800;
+      padding: 7px 10px; border-radius:999px;
+      border: 1px solid rgba(103,182,255,.35);
+      background: rgba(103,182,255,.12);
+      white-space:nowrap;
+    }
+    .plan h3{ margin:0 0 6px; font-size: 16px; }
+    .plan .who{ margin:0; color:var(--muted); font-size: 13.5px; line-height:1.5; }
+    .price{
+      margin: 12px 0 10px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+    }
+    .price b{ font-size: 20px; }
+    .price small{ color: var(--muted2); }
+    .plan ul{ margin: 10px 0 0; padding:0; list-style:none; display:grid; gap:9px; }
+    .plan li{ display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size: 13.3px; line-height:1.45; }
+    .plan .actions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .step{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .step .n{
+      width:34px; height:34px; border-radius: 12px;
+      background: rgba(103,182,255,.14);
+      border: 1px solid rgba(103,182,255,.22);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .step h4{ margin:0 0 6px; font-size: 14.5px; }
+    .step p{ margin:0; color:var(--muted); font-size: 13px; line-height:1.5; }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .kv{ display:grid; gap:10px; margin-top: 10px; }
+    .kv .row{
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.45;
+    }
+    .kv .row b{ color: var(--text); }
+
+    footer{
+      padding: 26px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size: 13px;
+      margin-top: 16px;
+    }
+    .foot{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .foot a{ color: var(--muted); }
+    .foot a:hover{ color: var(--text); }
+
+    @media (max-width: 1100px){
+      .pricing{ grid-template-columns: repeat(2, 1fr); }
+      .steps{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .two{ grid-template-columns: 1fr; }
+    }
+  
+    /* ═══ ENHANCED DESIGN SYSTEM ═══ */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(29,116,211,.30), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(103,182,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    body > *, header, main, footer { position: relative; z-index: 1; }
+
+    /* Dot grid background */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: radial-gradient(circle, rgba(103,182,255,.8) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Gradient text utility */
+    .grad-text, h1, .section-head h2 {
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 6s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Enhanced header */
+    header {
+      background: rgba(7,23,38,.72);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(103,182,255,.08);
+      transition: box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,.3);
+    }
+
+    /* Better card hovers */
+    .card, .tariff, .plan, .hero-card, blockquote, .step, details {
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover, .tariff:hover, .plan:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 30px rgba(103,182,255,.06);
+      border-color: rgba(103,182,255,.2);
+    }
+    blockquote:hover, .step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+      border-color: rgba(103,182,255,.18);
+    }
+
+    /* Enhanced buttons */
+    .btn {
+      transition: all 0.25s cubic-bezier(.22,1,.36,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #2563eb 50%, var(--primary2) 100%);
+      background-size: 200% 200%;
+      animation: btn-shimmer 4s ease infinite;
+    }
+    @keyframes btn-shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Enhanced badges */
+    .badge {
+      background: linear-gradient(135deg, rgba(103,182,255,.18), rgba(103,182,255,.08));
+      border-color: rgba(103,182,255,.3);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* Better pill */
+    .pill {
+      animation: fadeInDown 0.6s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Hero title animation */
+    h1 {
+      animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.15s both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .lead { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.3s both; }
+    .hero-actions { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.45s both; }
+    .mini { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.55s both; }
+    .hero-card { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.4s both; }
+
+    /* Smooth FAQ accordion */
+    details summary {
+      transition: color 0.2s ease;
+    }
+    details summary:hover { color: var(--accent); }
+    details summary span {
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+      display: inline-block;
+      font-size: 18px;
+    }
+    details[open] summary span { transform: rotate(45deg); }
+    details[open] {
+      border-color: rgba(103,182,255,.2);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Enhanced pricing cards */
+    .tariff.highlight, .plan.highlight {
+      border-color: rgba(103,182,255,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 0 40px rgba(103,182,255,.08);
+    }
+
+    /* Better check marks */
+    .check, .icon {
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    li:hover .check, li:hover .icon {
+      transform: scale(1.12);
+      background: rgba(103,182,255,.28);
+    }
+
+    /* Tags animation */
+    .mini .tag {
+      transition: all 0.2s ease;
+    }
+    .mini .tag:hover {
+      background: rgba(103,182,255,.1);
+      border-color: rgba(103,182,255,.25);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Chips */
+    .chip {
+      transition: all 0.2s ease;
+    }
+    .chip:hover {
+      background: rgba(103,182,255,.08);
+      border-color: rgba(103,182,255,.2);
+    }
+
+    /* Back to top button */
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 90;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(103,182,255,.2);
+      background: rgba(7,23,38,.85);
+      backdrop-filter: blur(12px);
+      color: var(--accent);
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.3s cubic-bezier(.22,1,.36,1);
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+    .back-top.show {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .back-top:hover {
+      background: rgba(29,116,211,.3);
+      border-color: rgba(103,182,255,.4);
+      transform: translateY(-2px);
+    }
+
+    /* Glow effect on section heads */
+    .section-head h2 {
+      position: relative;
+    }
+    .section-head h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 50px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0.6;
+    }
+
+    /* Better footer */
+    footer {
+      border-top: 1px solid rgba(103,182,255,.08);
+      background: rgba(0,0,0,.15);
+    }
+
+    /* Smooth selection */
+    ::selection {
+      background: rgba(103,182,255,.3);
+      color: var(--text);
+    }
+
+    /* Better focus states */
+    .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(103,182,255,.4);
+      box-shadow: 0 0 0 3px rgba(103,182,255,.1);
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="AbituHelp">
+          <img src="logo.png" alt="AbituHelp logo" />
+          <div>
+            <strong>AbituHelp</strong>
+            <span>international admission</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Navigation">
+          <a href="#packages">Packages</a>
+          <a href="#process">Process</a>
+          <a href="#requirements">Requirements</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+          <a class="btn" href="international-cn.html" aria-label="Chinese version">中文</a>
+          <a class="btn primary" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <span class="pill"><span class="dot"></span>International students • Admission to Russian universities</span>
+        <h1>International admission to universities across Russia — with a clear plan and full support</h1>
+        <p class="lead">
+          AbituHelp helps international applicants choose a suitable program, prepare documents, receive an invitation letter,
+          navigate entrance exams (if required), and understand visa and relocation steps.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#packages">See packages</a>
+          <a class="btn" href="tel:+79509222291">Call: +7 (950) 922-22-91</a>
+          <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram @abituhelp</a>
+        </div>
+
+        <div class="grid" style="margin-top:16px;">
+          <div class="card soft">
+            <h3>Relocation & adaptation</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>Visa steps explained and checked</li>
+              <li><span class="check">✓</span>Airport pickup / arrival guidance (where available)</li>
+              <li><span class="check">✓</span>Accommodation support (dorm/apartment)</li>
+              <li><span class="check">✓</span>Migration registration guidance</li>
+              <li><span class="check">✓</span>Practical support for daily life and studies</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Admission essentials</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>Program & university selection</li>
+              <li><span class="check">✓</span>Document checklist and preparation</li>
+              <li><span class="check">✓</span>Application submission support</li>
+              <li><span class="check">✓</span>Invitation letter (Admission Letter)</li>
+              <li><span class="check">✓</span>Entrance exams preparation (if needed)</li>
+            </ul>
+          </div>
+
+          <div class="card soft">
+            <h3>Transparent workflow</h3>
+            <p>We turn a complex process into a step-by-step plan, keep deadlines under control, and stay available in a working chat.</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#contact">Get a callback</a>
+              <a class="btn" href="index.html">Back to main site</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages">
+        <div class="section-head">
+          <h2>Packages & pricing</h2>
+          <p>Choose the level of support you need — from document review and submission to year-long concierge-style mentoring.</p>
+        </div>
+
+        <div class="pricing">
+          <article class="plan">
+            <div class="top">
+              <div>
+                <h3>Basic</h3>
+                <p class="who">For applicants who need document review, program selection, and submission support.</p>
+              </div>
+              <span class="badge">Start</span>
+            </div>
+
+            <div class="price"><b>$999</b><small>package</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>Up to 3 months of online support</li>
+              <li><span class="check">✓</span>Personal manager + working chat</li>
+              <li><span class="check">✓</span>3 Zoom calls (up to 60 minutes each)</li>
+              <li><span class="check">✓</span>University & program shortlist tailored to your request</li>
+              <li><span class="check">✓</span>Document preparation checklist + review</li>
+              <li><span class="check">✓</span>Support to obtain an invitation / admission letter</li>
+              <li><span class="check">✓</span>Communication guidance with universities</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">Order</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </article>
+
+          <article class="plan highlight">
+            <div class="top">
+              <div>
+                <h3>Plus</h3>
+                <p class="who">For applicants who also need migration steps and some in-person assistance (as available).</p>
+              </div>
+              <span class="badge">Popular</span>
+            </div>
+
+            <div class="price"><b>$1,499</b><small>package</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>Everything in Basic</li>
+              <li><span class="check">✓</span>Up to 4 Zoom calls (up to 60 minutes each)</li>
+              <li><span class="check">✓</span>Migration registration guidance and checklist</li>
+              <li><span class="check">✓</span>Arrival support (airport transfer guidance / where available)</li>
+              <li><span class="check">✓</span>University/city orientation (where available)</li>
+              <li><span class="check">✓</span>Diploma recognition (nostrification) consultation</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">Order</a>
+              <a class="btn" href="#process">See process</a>
+            </div>
+          </article>
+
+          <article class="plan">
+            <div class="top">
+              <div>
+                <h3>Pro</h3>
+                <p class="who">For families who want a concierge-style approach during the first academic year.</p>
+              </div>
+              <span class="badge">Concierge</span>
+            </div>
+
+            <div class="price"><b>$2,499</b><small>package</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>Everything in Plus</li>
+              <li><span class="check">✓</span>10-month support (first academic year focus)</li>
+              <li><span class="check">✓</span>Personal mentor + 1 Zoom call per month</li>
+              <li><span class="check">✓</span>Dormitory placement assistance</li>
+              <li><span class="check">✓</span>Apartment search/booking support (as needed)</li>
+              <li><span class="check">✓</span>Help with bank card / everyday setup</li>
+              <li><span class="check">✓</span>Tutor selection guidance + academic process help</li>
+              <li><span class="check">✓</span>Cultural adaptation and practical Q&A</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">Order</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Ask</a>
+            </div>
+          </article>
+
+          <article class="plan">
+            <div class="top">
+              <div>
+                <h3>Grant</h3>
+                <p class="who">For applicants planning to apply through quotas / scholarships and starting early.</p>
+              </div>
+              <span class="badge">Long-term</span>
+            </div>
+
+            <div class="price"><b>$3,499</b><small>package</small></div>
+
+            <ul>
+              <li><span class="check">✓</span>Everything in Pro</li>
+              <li><span class="check">✓</span>Longer guidance for foundation year + first year route</li>
+              <li><span class="check">✓</span>Monthly Zoom support + working chat</li>
+              <li><span class="check">✓</span>Translation & document legalization guidance (up to 15 pages scope)</li>
+              <li><span class="check">✓</span>Student visa & migration procedures checklist</li>
+              <li><span class="check">✓</span>Medical certificates path (086/U + HIV/HBV/HCV) guidance</li>
+              <li><span class="check">✓</span>Scholarship/quota application structure and document logic</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contact">Order</a>
+              <a class="btn" href="#requirements">Requirements</a>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top:12px; color:var(--muted2); font-size:12.5px; line-height:1.5;">
+          Note: exact scope may vary by university and your country documents. We confirm the checklist for your case at the start.
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="section-head">
+          <h2>How admission works (high level)</h2>
+          <p>Universities differ, but the overall flow is similar. We help you understand requirements and avoid missed steps.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h4>Program selection</h4>
+            <p>We align programs with your goals, language level, budget, and timeline.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h4>Documents</h4>
+            <p>We build a checklist: diplomas, translations, notarization/apostille if needed.</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h4>Submission</h4>
+            <p>We support application submission and communication with universities.</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <h4>Entrance exams</h4>
+            <p>If required, we help you prepare and plan exam schedule and logistics.</p>
+          </div>
+          <div class="step">
+            <div class="n">5</div>
+            <h4>Visa & arrival</h4>
+            <p>Invitation letter → student visa → arrival steps and initial adaptation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="requirements">
+        <div class="section-head">
+          <h2>Typical requirements</h2>
+          <p>The exact list depends on the university/program. Below is a common baseline used by many institutions.</p>
+        </div>
+
+        <div class="two">
+          <div class="card soft">
+            <h3>Common documents</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>Passport + photos (validity requirements vary)</li>
+              <li><span class="check">✓</span>Education documents (diploma/transcript)</li>
+              <li><span class="check">✓</span>Translations and legalization (as required)</li>
+              <li><span class="check">✓</span>Application forms and consent documents</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Medical & logistics</h3>
+            <ul class="bullets">
+              <li><span class="check">✓</span>Medical certificate pathway (often 086/U) — check per university</li>
+              <li><span class="check">✓</span>HIV / HBV / HCV tests (common for student visa processes)</li>
+              <li><span class="check">✓</span>Insurance and dormitory documents (varies)</li>
+              <li><span class="check">✓</span>Migration registration steps after arrival</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>Don’t speak Russian?</h3>
+          <p>
+            Many universities offer a one-year foundation/preparatory course. It helps you reach the required language level
+            and get ready for your degree program. We explain options and help you choose the right route in any region of Russia.
+          </p>
+        </div>
+
+        <div class="card soft" style="margin-top:14px;">
+          <h3>Tuition-free / scholarship / quota routes</h3>
+          <p>
+            International applicants may apply through government quota or scholarship programs. These routes typically require
+            additional documents (motivation letter, recommendations, translations) and strict deadlines. We help you build the
+            package logically and submit it correctly.
+          </p>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Short answers to common questions.</p>
+        </div>
+
+        <div class="two">
+          <div class="card">
+            <h3>Do you guarantee admission?</h3>
+            <p>We guarantee process quality and careful guidance. Final decisions depend on the university, competition, and your profile.</p>
+          </div>
+          <div class="card soft">
+            <h3>Do you work only with certain cities?</h3>
+            <p>No. We work with universities across Russia. In-person help depends on availability — we confirm it per case.</p>
+          </div>
+          <div class="card soft">
+            <h3>Can you help with English-taught programs?</h3>
+            <p>Yes — we can shortlist both Russian- and English-taught options depending on your request.</p>
+          </div>
+          <div class="card">
+            <h3>How do we start?</h3>
+            <p>Message us on Telegram or request a callback. We’ll clarify your case and recommend the best package.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <h2>Contact AbituHelp</h2>
+          <p>Fastest channel: Telegram. You can also call us directly.</p>
+        </div>
+
+        <div class="contact">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram @abituhelp</a>
+            <a class="btn" href="tel:+79509222291">+7 (950) 922-22-91</a>
+            <a class="btn" href="index.html">Back to main site</a>
+          </div>
+
+          <div class="kv">
+            <div class="row"><b>Coverage:</b> all Russia (online), in-person support depends on availability</div>
+            <div class="row"><b>Languages:</b> English / Russian (and other languages upon request)</div>
+            <div class="row"><b>Response time:</b> usually within 1 business day</div>
+          </div>
+
+          <div style="margin-top:10px; color:var(--muted2); font-size:12.5px; line-height:1.5;">
+            Tip: send your country, desired program level (Bachelor/Master), language preference, and timeline — we’ll reply with next steps.
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="foot">
+            <div>© <span id="year"></span> AbituHelp • International admission</div>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+              <a href="#packages">Packages</a>
+              <a href="#process">Process</a>
+              <a href="#requirements">Requirements</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  
+
+  <button class="back-top" id="backTop" aria-label="Back to top">&uarr;</button>
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('section, .card, .tariff, .plan, .step, blockquote, details, .hero-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      if (i % 3 === 1) el.classList.add('reveal-delay-1');
+      if (i % 3 === 2) el.classList.add('reveal-delay-2');
+      obs.observe(el);
+    });
+
+    // Header scroll effect
+    const hdr = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      hdr?.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Back to top
+    const btt = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      btt?.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+    btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

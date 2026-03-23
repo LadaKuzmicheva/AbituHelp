@@ -1,0 +1,1349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AbituHelp — end-to-end admission support for Russian universities: strategy, documents, applications, competition lists, enrollment." />
+  <meta property="og:title" content="AbituHelp — Admission Support for Russian Universities" />
+  <meta property="og:description" content="Strategy, documents, submission, competition lists, and enrollment — step by step." />
+  <meta property="og:type" content="website" />
+  <title>AbituHelp — Admission Support for Russian Universities</title>
+
+  <style>
+    :root{
+      --bg: #071726;
+      --bg2:#0b2540;
+      --text:#eaf2ff;
+      --muted:#b8c7de;
+      --muted2:#8fa6c6;
+
+      --primary:#1d74d3;
+      --primary2:#0b4f8a;
+      --accent:#67b6ff;
+
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+      --radius: 18px;
+      --radius2: 28px;
+
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(29,116,211,.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(103,182,255,.25), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:14px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(103,182,255,.15);
+    }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,23,38,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
+    }
+    .brand img{
+      height:34px; width:auto; display:block;
+    }
+    .brand .name{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand .name strong{ font-size:14px; letter-spacing:.3px; }
+    .brand .name span{ font-size:12px; color:var(--muted2); }
+
+    .menu{
+      display:flex; gap:18px; align-items:center;
+    }
+    .menu a{
+      font-size:14px;
+      color:var(--muted);
+      padding:10px 10px;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+    .menu a:hover{ color:var(--text); background: rgba(255,255,255,.05); }
+
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      transition: .2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary2) 100%);
+      border-color: rgba(103,182,255,.35);
+      box-shadow: 0 12px 30px rgba(29,116,211,.25);
+    }
+    .btn.primary:hover{ box-shadow: 0 16px 40px rgba(29,116,211,.32); }
+
+    .burger{ display:none; }
+
+    .hero{
+      position:relative;
+      padding: 54px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 26px;
+      align-items:stretch;
+    }
+    h1{
+      margin: 14px 0 12px;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.55;
+      max-width: 60ch;
+    }
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
+    .mini{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;
+    }
+    .mini .tag{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .hero-card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 300px at 20% 0%, rgba(103,182,255,.22), transparent 60%),
+        radial-gradient(600px 300px at 100% 20%, rgba(29,116,211,.22), transparent 55%);
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero-card > *{ position:relative; z-index:1; }
+    .hero-card h3{ margin:0 0 10px; font-size:16px; }
+    .list{
+      display:grid; gap:10px; margin: 12px 0 0;
+      padding:0; list-style:none;
+    }
+    .list li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.45;
+      padding:10px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+    }
+    .icon{
+      width:22px; height:22px; flex:0 0 22px;
+      border-radius: 8px;
+      background: rgba(103,182,255,.18);
+      border: 1px solid rgba(103,182,255,.22);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight:800;
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    section{ padding: 44px 0; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; margin-bottom: 18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 26px;
+      letter-spacing:-0.01em;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width: 72ch;
+      line-height:1.5;
+      font-size: 14.5px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.20);
+      position:relative;
+      overflow:hidden;
+    }
+    .card.soft{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    }
+    .card h3{ margin: 0 0 8px; font-size:16px; }
+    .card p{ margin: 0 0 12px; color: var(--muted); font-size:14px; line-height:1.55; }
+    .price{
+      display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+      margin: 14px 0 12px;
+    }
+    .price strong{ font-size: 22px; letter-spacing:-0.02em; }
+    .price span{ color: var(--muted2); font-size: 13px; }
+    .card .meta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px;
+    }
+    .chip{
+      font-size:12.5px;
+      color: var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:7px 10px;
+      border-radius: 999px;
+    }
+    .card .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 12px;
+    }
+
+    .tariffs{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items:stretch;
+    }
+    .tariff{
+      padding:18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .tariff.highlight{
+      border-color: rgba(103,182,255,.35);
+      background:
+        radial-gradient(500px 220px at 10% 0%, rgba(103,182,255,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+    }
+    .tariff .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin-bottom: 10px;
+    }
+    .badge{
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(103,182,255,.35);
+      background: rgba(103,182,255,.12);
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .tariff h3{ margin: 0 0 8px; font-size: 18px; }
+    .tariff .sub{ margin:0; color: var(--muted); font-size:14px; line-height:1.5; }
+    .tariff .pricebox{
+      margin: 14px 0 12px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+    }
+    .tariff .pricebox .row{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:10px; padding: 6px 0;
+      border-bottom: 1px dashed rgba(255,255,255,.10);
+    }
+    .tariff .pricebox .row:last-child{ border-bottom:none; }
+    .tariff .pricebox .row b{ font-size:18px; }
+    .tariff .pricebox .row small{ color: var(--muted2); }
+    .tariff ul{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid; gap:10px;
+    }
+    .tariff li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      font-size: 13.8px;
+      line-height:1.45;
+    }
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(29,116,211,.20);
+      border: 1px solid rgba(103,182,255,.25);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight: 900;
+      flex:0 0 18px;
+      margin-top:2px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .step{
+      padding:16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .step .n{
+      width:34px; height:34px; border-radius: 12px;
+      background: rgba(103,182,255,.14);
+      border: 1px solid rgba(103,182,255,.22);
+      display:grid; place-items:center;
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .step h4{ margin:0 0 6px; font-size: 15px; }
+    .step p{ margin:0; color: var(--muted); font-size: 13.5px; line-height:1.5; }
+
+    .quotes{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    blockquote{
+      margin:0;
+      padding:16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    blockquote p{ margin:0 0 12px; color: var(--muted); line-height:1.55; font-size:14px; }
+    blockquote footer{ color: var(--text); font-weight: 700; font-size: 13px; }
+    blockquote footer span{ display:block; color: var(--muted2); font-weight: 500; margin-top: 2px; }
+
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    details{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin: 10px 0 0; color: var(--muted); line-height:1.55; font-size: 14px; }
+
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 16px;
+      align-items:stretch;
+    }
+    form{
+      border:1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,.04);
+      padding: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+    .fields{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    label{ display:block; font-size: 12.5px; color: var(--muted2); margin-bottom: 6px; }
+    input, select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{ min-height: 110px; resize: vertical; grid-column: 1 / -1; }
+    .form-actions{
+      margin-top: 12px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .note{
+      color: var(--muted2);
+      font-size: 12.5px;
+      line-height:1.5;
+      margin-top: 10px;
+    }
+    .aside{
+      border:1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .aside h3{ margin:0 0 10px; font-size: 16px; }
+    .aside .kv{
+      display:grid; gap:10px;
+      margin-top: 10px;
+    }
+    .kv .row{
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.45;
+    }
+    .kv .row b{ color: var(--text); }
+
+    footer{
+      padding: 26px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap: 16px; flex-wrap:wrap;
+    }
+    .foot a{ color: var(--muted); }
+    .foot a:hover{ color: var(--text); }
+
+    .toast{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100;
+      max-width: 360px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(7,23,38,.85);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 12px 12px;
+      display:none;
+    }
+    .toast.show{ display:block; animation: pop .18s ease-out; }
+    @keyframes pop { from{ transform: translateY(8px); opacity:.0 } to{ transform:none; opacity:1 } }
+    .toast strong{ display:block; margin-bottom: 4px; }
+    .toast span{ color: var(--muted); font-size: 13px; line-height:1.4; }
+
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .tariffs{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: repeat(2, 1fr); }
+      .quotes{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px){
+      .menu{ display:none; }
+      .burger{ display:inline-flex; }
+      .brand{ min-width: unset; }
+      .fields{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .mobile{
+      display:none;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 10px 0 14px;
+    }
+    .mobile.open{ display:block; }
+    .mobile a{
+      display:block;
+      padding: 12px 10px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .mobile a:hover{ color: var(--text); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); }
+  
+    /* ═══ ENHANCED DESIGN SYSTEM ═══ */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(29,116,211,.30), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(103,182,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    body > *, header, main, footer { position: relative; z-index: 1; }
+
+    /* Dot grid background */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: radial-gradient(circle, rgba(103,182,255,.8) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Gradient text utility */
+    .grad-text, h1, .section-head h2 {
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 6s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Enhanced header */
+    header {
+      background: rgba(7,23,38,.72);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(103,182,255,.08);
+      transition: box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,.3);
+    }
+
+    /* Better card hovers */
+    .card, .tariff, .plan, .hero-card, blockquote, .step, details {
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover, .tariff:hover, .plan:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 30px rgba(103,182,255,.06);
+      border-color: rgba(103,182,255,.2);
+    }
+    blockquote:hover, .step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+      border-color: rgba(103,182,255,.18);
+    }
+
+    /* Enhanced buttons */
+    .btn {
+      transition: all 0.25s cubic-bezier(.22,1,.36,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #2563eb 50%, var(--primary2) 100%);
+      background-size: 200% 200%;
+      animation: btn-shimmer 4s ease infinite;
+    }
+    @keyframes btn-shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Enhanced badges */
+    .badge {
+      background: linear-gradient(135deg, rgba(103,182,255,.18), rgba(103,182,255,.08));
+      border-color: rgba(103,182,255,.3);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* Better pill */
+    .pill {
+      animation: fadeInDown 0.6s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Hero title animation */
+    h1 {
+      animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.15s both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .lead { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.3s both; }
+    .hero-actions { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.45s both; }
+    .mini { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.55s both; }
+    .hero-card { animation: fadeInUp 0.8s cubic-bezier(.22,1,.36,1) 0.4s both; }
+
+    /* Smooth FAQ accordion */
+    details summary {
+      transition: color 0.2s ease;
+    }
+    details summary:hover { color: var(--accent); }
+    details summary span {
+      transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+      display: inline-block;
+      font-size: 18px;
+    }
+    details[open] summary span { transform: rotate(45deg); }
+    details[open] {
+      border-color: rgba(103,182,255,.2);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Enhanced pricing cards */
+    .tariff.highlight, .plan.highlight {
+      border-color: rgba(103,182,255,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 0 40px rgba(103,182,255,.08);
+    }
+
+    /* Better check marks */
+    .check, .icon {
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    li:hover .check, li:hover .icon {
+      transform: scale(1.12);
+      background: rgba(103,182,255,.28);
+    }
+
+    /* Tags animation */
+    .mini .tag {
+      transition: all 0.2s ease;
+    }
+    .mini .tag:hover {
+      background: rgba(103,182,255,.1);
+      border-color: rgba(103,182,255,.25);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Chips */
+    .chip {
+      transition: all 0.2s ease;
+    }
+    .chip:hover {
+      background: rgba(103,182,255,.08);
+      border-color: rgba(103,182,255,.2);
+    }
+
+    /* Back to top button */
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 90;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(103,182,255,.2);
+      background: rgba(7,23,38,.85);
+      backdrop-filter: blur(12px);
+      color: var(--accent);
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.3s cubic-bezier(.22,1,.36,1);
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+    .back-top.show {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .back-top:hover {
+      background: rgba(29,116,211,.3);
+      border-color: rgba(103,182,255,.4);
+      transform: translateY(-2px);
+    }
+
+    /* Glow effect on section heads */
+    .section-head h2 {
+      position: relative;
+    }
+    .section-head h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 50px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0.6;
+    }
+
+    /* Better footer */
+    footer {
+      border-top: 1px solid rgba(103,182,255,.08);
+      background: rgba(0,0,0,.15);
+    }
+
+    /* Smooth selection */
+    ::selection {
+      background: rgba(103,182,255,.3);
+      color: var(--text);
+    }
+
+    /* Better focus states */
+    .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(103,182,255,.4);
+      box-shadow: 0 0 0 3px rgba(103,182,255,.1);
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="AbituHelp">
+          <img src="logo.png" alt="AbituHelp logo" />
+          <div class="name">
+            <strong>AbituHelp</strong>
+            <span>admission support</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Navigation">
+          <a href="#services">Services</a>
+          <a href="#tariffs">Packages</a>
+          <a href="#how">How it works</a>
+          <a href="#international">International</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Contacts</a>
+        </nav>
+
+        <div class="cta">
+          <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn primary" href="#contacts">Free intro call</a>
+          <button class="btn burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+
+      <div class="mobile" id="mobileNav" aria-label="Mobile navigation">
+        <a href="#services">Services</a>
+        <a href="#tariffs">Packages</a>
+        <a href="#how">How it works</a>
+        <a href="#international">International</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Contacts</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero">
+        <span class="pill"><span class="dot"></span>Admission to Russian universities — with clarity, control and less stress</span>
+
+        <div class="hero-grid">
+          <div>
+            <h1>AbituHelp — end-to-end admission support for universities across Russia</h1>
+            <p class="lead">
+              We guide families through the full admission journey: strategy, program selection, documents,
+              applications, competition lists, and enrollment — step by step.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#tariffs">Choose a package</a>
+              <a class="btn" href="#services">See one-off services</a>
+              <a class="btn" href="tel:+79509222291">Call: +7 (950) 922-22-91</a>
+            </div>
+
+            <div class="mini" aria-label="Highlights">
+              <span class="tag">Admission strategy</span>
+              <span class="tag">Documents & deadlines</span>
+              <span class="tag">Competition lists</span>
+              <span class="tag">University/program fit</span>
+              <span class="tag">Family support</span>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Deliverables">
+            <h3>What your family gets</h3>
+            <ul class="list">
+              <li><span class="icon">✓</span> A clear action plan: what to do, when, and where</li>
+              <li><span class="icon">✓</span> A shortlist of universities/programs aligned with your criteria</li>
+              <li><span class="icon">✓</span> Document checklist + deadline control</li>
+              <li><span class="icon">✓</span> Guidance on competition lists and enrollment decisions</li>
+              <li><span class="icon">✓</span> Support chat for fast answers</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <section id="services">
+        <div class="section-head">
+          <div>
+            <h2>One-off services</h2>
+            <p>If you don’t need full support, pick a focused service and solve a specific task quickly.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card soft">
+            <h3>Consultation</h3>
+            <p>We answer your admission questions (excluding full university selection): rules, deadlines, documents, edge cases.</p>
+            <div class="price"><strong>7,000 ₽</strong><span>per session</span></div>
+            <div class="meta">
+              <span class="chip">up to 7 questions</span>
+              <span class="chip">online</span>
+              <span class="chip">summary notes</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request</a>
+              <a class="btn" href="#faq">How it works</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>University/College Map</h3>
+            <p>Selection of institutions and programs by your criteria + practical recommendations and score benchmarks.</p>
+            <div class="price"><strong>15,000 ₽</strong><span>custom shortlist</span></div>
+            <div class="meta">
+              <span class="chip">up to 10 institutions</span>
+              <span class="chip">PDF after presentation</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request</a>
+              <a class="btn" href="#how">What you receive</a>
+            </div>
+          </article>
+
+          <article class="card soft">
+            <h3>Admission Strategy</h3>
+            <p>A structured roadmap: priorities, calendar, tactics, and a step-by-step plan for the whole season.</p>
+            <div class="price"><strong>34,900 ₽</strong><span>package</span></div>
+            <div class="meta">
+              <span class="chip">3 Zoom sessions</span>
+              <span class="chip">map of 10 universities</span>
+              <span class="chip">instructions</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request</a>
+              <a class="btn" href="#tariffs">Compare packages</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Deep Career Guidance + University Map</h3>
+            <p>When your direction isn’t clear — we help identify a suitable path and connect it to programs/universities.</p>
+            <div class="price"><strong>37,900 ₽</strong><span>package</span></div>
+            <div class="meta">
+              <span class="chip">multiple sessions</span>
+              <span class="chip">final report</span>
+              <span class="chip">university map</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request</a>
+              <a class="btn" href="#faq">Who it’s for</a>
+            </div>
+          </article>
+
+          <article class="card soft">
+            <h3>Career Map</h3>
+            <p>If you know the general sphere, we translate it into concrete majors, tasks, and realistic study options.</p>
+            <div class="price"><strong>12,000 ₽</strong><span>package</span></div>
+            <div class="meta">
+              <span class="chip">majors shortlist</span>
+              <span class="chip">case-based approach</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request</a>
+              <a class="btn" href="#how">What it looks like</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>VIP Support</h3>
+            <p>Concierge-style format with maximum involvement. Scope and pricing are tailored to your case.</p>
+            <div class="price"><strong>Price on request</strong><span>custom</span></div>
+            <div class="meta">
+              <span class="chip">priority</span>
+              <span class="chip">case-based</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tariffs">
+        <div class="section-head">
+          <div>
+            <h2>Admission support packages</h2>
+            <p>For families who want a guided process: we plan, verify, submit, track competition lists, and help you make the right enrollment decisions.</p>
+          </div>
+        </div>
+
+        <div class="tariffs">
+          <article class="tariff">
+            <div class="top">
+              <h3>Standard Support</h3>
+              <span class="badge">Most common</span>
+            </div>
+            <p class="sub">A solid end-to-end option: strategy, universities/programs, documents, submissions, competition tracking.</p>
+
+            <div class="pricebox">
+              <div class="row"><small>Monthly payment</small><b>29,000 ₽/mo</b></div>
+              <div class="row"><small>One-time payment</small><b>199,000 ₽</b></div>
+            </div>
+
+            <ul>
+              <li><span class="check">✓</span>Strategy sessions + action plan</li>
+              <li><span class="check">✓</span>University/program selection aligned with your criteria</li>
+              <li><span class="check">✓</span>Document review + deadline control</li>
+              <li><span class="check">✓</span>Competition lists monitoring + recommendations</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Choose</a>
+              <a class="btn" href="#how">Process</a>
+            </div>
+          </article>
+
+          <article class="tariff highlight">
+            <div class="top">
+              <h3>Special Support</h3>
+              <span class="badge">Complex cases</span>
+            </div>
+            <p class="sub">For special procedures: quotas, entrance exams, olympiad-based routes, non-standard trajectories.</p>
+
+            <div class="pricebox">
+              <div class="row"><small>Monthly payment</small><b>39,000 ₽/mo</b></div>
+              <div class="row"><small>One-time payment</small><b>269,000 ₽</b></div>
+            </div>
+
+            <ul>
+              <li><span class="check">✓</span>Everything in Standard + guidance for special procedures</li>
+              <li><span class="check">✓</span>Entrance exam scheduling & coordination</li>
+              <li><span class="check">✓</span>Edge-case document logic and approvals</li>
+              <li><span class="check">✓</span>More intensive decision support during peak days</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Choose</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Ask in Telegram</a>
+            </div>
+          </article>
+
+          <article class="tariff">
+            <div class="top">
+              <h3>Support + Mentoring</h3>
+              <span class="badge">Motivation focus</span>
+            </div>
+            <p class="sub">When you want both admission support and regular mentoring for consistency, stress management, and routine.</p>
+
+            <div class="pricebox">
+              <div class="row"><small>Monthly payment</small><b>47,000 ₽/mo</b></div>
+              <div class="row"><small>One-time payment</small><b>329,000 ₽</b></div>
+            </div>
+
+            <ul>
+              <li><span class="check">✓</span>Admission support + regular mentoring sessions</li>
+              <li><span class="check">✓</span>Time management and progress control</li>
+              <li><span class="check">✓</span>Stress reduction during exams</li>
+              <li><span class="check">✓</span>Support for both student and parents</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Choose</a>
+              <a class="btn" href="#faq">FAQ</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="how">
+        <div class="section-head">
+          <div>
+            <h2>How it works</h2>
+            <p>We turn admission into a manageable project: clear steps, responsibility, and deadlines — without panic.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h4>Intro & diagnosis</h4>
+            <p>We clarify goals, constraints, admission route, and your starting point.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h4>Strategy & shortlist</h4>
+            <p>We build the university/program set and the plan that matches your priorities.</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h4>Documents & submission</h4>
+            <p>We verify documents, handle deadlines, and guide submissions accurately.</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <h4>Competition & enrollment</h4>
+            <p>We track lists, assess chances, and advise on consent/enrollment decisions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Testimonials">
+        <div class="section-head">
+          <div>
+            <h2>Testimonials</h2>
+            <p>Placeholder blocks — replace with your real reviews (text, screenshots, links).</p>
+          </div>
+        </div>
+
+        <div class="quotes">
+          <blockquote>
+            <p>“We finally had a clear plan. Deadlines and documents stopped being scary, and competition lists became understandable.”</p>
+            <footer>Client<span>Parent of an applicant</span></footer>
+          </blockquote>
+          <blockquote>
+            <p>“Saved us a lot of time: document checks, admissions logic, and the right decision at the critical moment.”</p>
+            <footer>Client<span>Applicant</span></footer>
+          </blockquote>
+          <blockquote>
+            <p>“Complex route with entrance exams — the team helped avoid conflicts and supported us through every step.”</p>
+            <footer>Client<span>Parent</span></footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="international">
+        <div class="section-head">
+          <div>
+            <h2>International applicants</h2>
+            <p>We also support international students: program selection, documents, invitation letter, visa steps, relocation & adaptation.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card soft">
+            <h3>International admission (EN)</h3>
+            <p>English-language page with packages, process, and requirements for studying in Russia.</p>
+            <div class="price"><strong>From $999</strong><span>packages</span></div>
+            <div class="actions">
+              <a class="btn primary" href="international.html">Open page</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Ask in Telegram</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>国际学生申请（中文）</h3>
+            <p>中文版本：服务套餐、申请流程、材料清单与签证/落地支持。</p>
+            <div class="price"><strong>从 $999 起</strong><span>套餐</span></div>
+            <div class="actions">
+              <a class="btn primary" href="international-cn.html">打开页面</a>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </article>
+
+          <article class="card soft">
+            <h3>Quick contact</h3>
+            <p>Tell us your situation — we’ll recommend the best format and next steps.</p>
+            <div class="actions">
+              <a class="btn primary" href="#contacts">Request a call</a>
+              <a class="btn" href="tel:+79509222291">Call</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <div>
+            <h2>FAQ</h2>
+            <p>Common questions. Extend and adjust as needed.</p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Do you guarantee admission? <span>＋</span></summary>
+            <p>We guarantee process quality: correct documents, deadline control, and clear recommendations. The final result depends on scores, competition, and university rules.</p>
+          </details>
+
+          <details>
+            <summary>Do you work nationwide? <span>＋</span></summary>
+            <p>Yes. We work with universities across Russia and build a plan around your criteria — not around a single city.</p>
+          </details>
+
+          <details>
+            <summary>Can I buy only a one-off service? <span>＋</span></summary>
+            <p>Yes — consultation, university map, strategy, or career guidance. It’s a good option if you want to solve one specific task.</p>
+          </details>
+
+          <details>
+            <summary>How do you communicate? <span>＋</span></summary>
+            <p>We use calls (Zoom/phone) and a working chat. For quick questions — Telegram is usually the fastest.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contacts">
+        <div class="section-head">
+          <div>
+            <h2>Contacts</h2>
+            <p>Leave a request — we’ll review your case and recommend the best format: one-off service or full support.</p>
+          </div>
+        </div>
+
+        <div class="contact">
+          <form id="leadForm">
+            <div class="fields">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" autocomplete="tel" placeholder="+7 ___ ___-__-__" required />
+              </div>
+              <div>
+                <label for="role">You are</label>
+                <select id="role" name="role">
+                  <option value="parent">Parent</option>
+                  <option value="student">Applicant</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="messenger">Preferred channel</label>
+                <select id="messenger" name="messenger">
+                  <option value="telegram">Telegram</option>
+                  <option value="phone">Phone</option>
+                </select>
+              </div>
+
+              <textarea name="message" placeholder="Briefly describe your situation: grade/year, goals, constraints, timeline."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Send request</button>
+              <a class="btn" href="https://t.me/abituhelp" target="_blank" rel="noopener">Telegram @abituhelp</a>
+              <a class="btn" href="tel:+79509222291">Call</a>
+            </div>
+
+            <div class="note">
+              By sending this form you agree to personal data processing. (Connect your policy + backend/CRM endpoint.)
+            </div>
+          </form>
+
+          <aside class="aside">
+            <h3>AbituHelp</h3>
+            <div class="kv">
+              <div class="row"><b>Phone:</b> <a href="tel:+79509222291">+7 (950) 922-22-91</a></div>
+              <div class="row"><b>Telegram:</b> <a href="https://t.me/abituhelp" target="_blank" rel="noopener">@abituhelp</a></div>
+              <div class="row"><b>Coverage:</b> All Russia (online)</div>
+              <div class="row"><b>Hours:</b> Mon–Sat 10:00–19:00</div>
+            </div>
+
+            <div style="margin-top:12px; color:var(--muted2); font-size:12.5px; line-height:1.5;">
+              Want more pages (About, Reviews, Blog, separate FAQ)? Tell me — I’ll generate them in the same style.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="foot">
+            <div>
+              <div style="font-weight:800; color:var(--text); margin-bottom:6px;">AbituHelp</div>
+              <div>© <span id="year"></span> • Admission support for Russian universities</div>
+            </div>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+              <a href="#services">Services</a>
+              <a href="#tariffs">Packages</a>
+              <a href="#international">International</a>
+              <a href="#faq">FAQ</a>
+              <a href="#contacts">Contacts</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <strong id="toastTitle">Done</strong>
+    <span id="toastText">We received your request and will contact you soon.</span>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">&uarr;</button>
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('section, .card, .tariff, .step, blockquote, details, .hero-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      if (i % 3 === 1) el.classList.add('reveal-delay-1');
+      if (i % 3 === 2) el.classList.add('reveal-delay-2');
+      obs.observe(el);
+    });
+    // Header scroll
+    const hdr = document.querySelector('header');
+    window.addEventListener('scroll', () => { hdr?.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    // Back to top
+    const btt = document.getElementById('backTop');
+    window.addEventListener('scroll', () => { btt?.classList.toggle('show', window.scrollY > 500); }, { passive: true });
+    btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    function closeMobile(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+    burger?.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(isOpen));
+    });
+    mobileNav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
+
+    const toast = document.getElementById('toast');
+    const toastTitle = document.getElementById('toastTitle');
+    const toastText  = document.getElementById('toastText');
+    let toastTimer;
+
+    function showToast(title, text){
+      toastTitle.textContent = title;
+      toastText.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3600);
+    }
+
+    const form = document.getElementById('leadForm');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name  = (document.getElementById('name')?.value || '').trim();
+      const phone = (document.getElementById('phone')?.value || '').trim();
+      if(!name || !phone){
+        showToast('Check the fields', 'Please enter your name and phone.');
+        return;
+      }
+      // TODO: connect to your backend/CRM endpoint
+      form.reset();
+      showToast('Request sent', 'Thank you! We will contact you soon.');
+    });
+  </script>
+</body>
+</html>
